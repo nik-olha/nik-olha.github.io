@@ -1,0 +1,297 @@
+@use "variables" as var;
+@use "mixins";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+   background-color: var.$bg-light;
+ }
+
+h1 {
+  color: var.$bg-darkgray;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: white;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  @include mixins.respond(medium) {
+    display: flex;
+  }
+}
+
+.toggle-button .bar {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 10 px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var.$bg-main;
+  color: white;
+}
+
+.nav {
+  display: flex;
+  @include mixins.respond(medium) {
+    display: none;
+  }
+
+  &__item {
+    padding: 10px;
+    background-color: var.$bg-moko;
+    width: 6rem;
+    text-align: center;
+    cursor: pointer;
+  }
+  &__item:not(:last-child) {
+    margin-right: 1.6rem;
+  }
+}
+
+#logo {
+  display: flex;
+  padding: 10px;
+  background-color: var.$bg-moko;
+  text-align: center;
+}
+
+.posts {
+  padding: 50px;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  @include mixins.respond(medium) {
+    flex-direction: column;
+  }
+
+  &__item {
+    padding-top: 50px;
+    margin: 20px;
+  }
+}
+
+#article {
+  margin-right: 100px;
+  padding: 20px;
+}
+
+.home__item2 svg {
+  padding-top: 50px;
+  margin: 20px;
+  @include mixins.respond(medium) {
+    height: 400px;
+    width: 300px;
+  }
+  @include mixins.respond(small) {
+    height: 300px;
+    width: 200px;
+  }
+}
+
+#cloud {
+  animation: cloud 2s infinite linear alternate;
+  transform-origin: center;
+}
+
+#man {
+  animation: moved 5s infinite linear alternate;
+  transform-origin: center;
+}
+
+#plant {
+  animation: greeny 10s infinite linear alternate;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes greeny {
+  from {
+    transform: scale(0.2, 0.1);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes moved {
+  from {
+    transform: translate();
+  }
+  to {
+    transform: translate(400px, 0px);
+  }
+}
+
+@keyframes cloud {
+  from {
+    transform: translate();
+  }
+  to {
+    transform: translate(-20px, 5px);
+  }
+}
+
+.some-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+}
+
+.grid-items {
+  margin: 50px;
+  height: 400px;
+  background-color: var.$bg-main;
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.column-grid {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.dark {
+  background-color: transparent;
+  width: 100%;
+  margin-top: 70px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var.$bg-darkgray;
+}
+
+.blog {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+
+  &__item {
+    padding-top: 50px;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+
+    @include mixins.respond(medium) {
+      flex-direction: column;
+    }
+
+    &__text {
+      margin-top: 5px;
+      padding: 5px;
+      margin-left: 10px;
+      margin-top: 40px;
+      text-align: justify;
+    }
+  }
+}
+
+.image {
+  margin-left: 30px;
+  width: 300px;
+}
+
+.btn {
+  background-color: transparent;
+  width: 200px;
+  margin-top: 30px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid var.$bg-darkgray;
+}
+
+#contacts {
+  margin-top: 100px;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid var.$bg-darkgray;
+
+  background-color: var.$bg-light;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  margin: 8px 0;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 1px solid var.$bg-darkgray;
+
+  background-color: var.$bg-light;
+  resize: none;
+}
+
+input[type="submit"] {
+  width: 30%;
+  background-color: var.$bg-moko;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1px solid var.$bg-darkgray;
+  cursor: pointer;
+}
+
+.forms {
+  text-align: right;
+  margin: 50px;
+  margin-top: 20px;
+  background-color: var.$bg-main;
+  padding: 20px;
+}
+
+.footer {
+  background: var.$bg-darkgray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 70px;
+
+  color: white;
+  &__logo {
+    display: flex;
+  }
+  &__social {
+    font-size: 25px;
+    &__item {
+      margin: 7px;
+    }
+  }
+  @include mixins.respond(medium) {
+    flex-direction: column;
+  }
+}
